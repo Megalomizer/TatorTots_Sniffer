@@ -1,0 +1,38 @@
+.window-box {
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
+    
+}
+
+.center-object {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.header-margins {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.row-objects-endtoend {
+    display: flex;
+    height: fit-content;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.btn-generic-width {
+    width: 250px;
+}
+
+.navbar-maxheight {
+    height: 75px;
+}
+
+.standard-width {
+    width: 100%;
+    padding-left: 25%;
+    padding-right: 25%;
+}
