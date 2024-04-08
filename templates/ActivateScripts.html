@@ -2,9 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>SleepRythm</title>
-        <link rel="stylesheet" href="../Styles/bootswatchLux.css"/>
-        <link rel="stylesheet" href="../Styles/activescripts.css"/>
+        <title>ActivateScripts</title>
+        <link rel="stylesheet" href="../static/styles/bootswatchLux.css"/>
+        <link rel="stylesheet" href="../static/styles/activescripts.css"/>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -16,24 +16,24 @@
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="../HTML/ActivateScripts.html">
+                            <a class="nav-link active" href="/activatescripts">
                                 Activate Scripts
+                                <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../HTML/CalorieenTeller.html">
+                            <a class="nav-link" href="/caloriecounter">
                                 Calorieën Teller
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../HTML/HeartBeats.html">
+                            <a class="nav-link" href="/heartbeats">
                                 Hartslag Monitor
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="../HTML/SleepRythm.html">
+                            <a class="nav-link" href="/sleeprythm">
                                 Slaap Ritme
-                                <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
                     </ul>
@@ -42,7 +42,24 @@
         </nav>
 
         <div class="window-box">
-            <h1 class="center-object header-margins">Sleep Rythm</h1>
+            <h1 class="center-object header-margins">Activate Scripts Page</h1>
+            <div class="standard-width">
+                <div class="row-objects-endtoend">
+                    <button type="button" class="btn btn-primary btn-generic-width">
+                        Activate sniffer button
+                    </button>
+                    <p class="lead text-danger">Inactive</p>
+                </div>
+            </div>
+            <p></p>
+            <div class="standard-width">
+                <div class="row-objects-endtoend">
+                    <button type="button" class="btn btn-primary btn-generic-width">
+                        Activate spoofer button
+                    </button>
+                    <p class="lead text-success">Active</p>
+                </div>
+            </div>
         </div>
     </body>
 </html>
