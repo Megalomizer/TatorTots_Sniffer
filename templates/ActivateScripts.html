@@ -48,9 +48,15 @@
                     <a type="button" class="btn btn-primary btn-generic-width" href="/activatescripts/changeSnifferActivity">
                         Active Sniffer Button
                     </a>
+                    {% if snifferbtnactivity=="Inactive" %}
                     <p class="lead text-danger">
                         {{ snifferbtnactivity }}
                     </p>
+                    {% elif snifferbtnactivity=="Active" %}
+                    <p class="lead text-success">
+                        {{ snifferbtnactivity }}
+                    </p>
+                    {% endif %}
                 </div>
             </div>
             <p></p>
@@ -59,9 +65,15 @@
                     <a type="button" class="btn btn-primary btn-generic-width" href="/activatescripts/changeSpooferActivity">
                         Activate spoofer button
                     </a>
+                    {% if spooferbtnactivity=="Inactive" %}
+                    <p class="lead text-danger">
+                        {{ spooferbtnactivity }}
+                    </p>
+                    {% elif spooferbtnactivity=="Active" %}
                     <p class="lead text-success">
                         {{ spooferbtnactivity }}
                     </p>
+                    {% endif %}
                 </div>
             </div>
             <p id="kaas">
