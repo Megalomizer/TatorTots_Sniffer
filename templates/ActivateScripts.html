@@ -5,6 +5,7 @@
         <title>ActivateScripts</title>
         <link rel="stylesheet" href="../static/styles/bootswatchLux.css"/>
         <link rel="stylesheet" href="../static/styles/activescripts.css"/>
+        <script src="../static/js/activatescripts.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -45,40 +46,25 @@
             <h1 class="center-object header-margins">Activate Scripts Page</h1>
             <div class="standard-width">
                 <div class="row-objects-endtoend">
-                    <a type="button" class="btn btn-primary btn-generic-width" href="/activatescripts/changeSnifferActivity">
-                        Active Sniffer Button
-                    </a>
-                    {% if snifferbtnactivity=="Inactive" %}
-                    <p class="lead text-danger">
-                        {{ snifferbtnactivity }}
+                    <button type="button" class="btn btn-primary btn-generic-width" id="sniffer-activity-btn" onclick="changeSnifferActivity()">
+                        Activate Spoofer Button
+                    </button>
+                    <p id="sniffer-activity-notifier" class="lead text-danger">
+                        Inactive
                     </p>
-                    {% elif snifferbtnactivity=="Active" %}
-                    <p class="lead text-success">
-                        {{ snifferbtnactivity }}
-                    </p>
-                    {% endif %}
                 </div>
             </div>
             <p></p>
             <div class="standard-width">
                 <div class="row-objects-endtoend">
-                    <a type="button" class="btn btn-primary btn-generic-width" href="/activatescripts/changeSpooferActivity">
-                        Activate spoofer button
-                    </a>
-                    {% if spooferbtnactivity=="Inactive" %}
-                    <p class="lead text-danger">
-                        {{ spooferbtnactivity }}
+                    <button type="button" class="btn btn-primary btn-generic-width" id="spoofer-activity-btn" onclick="changeSpooferActivity()">
+                        Activate Spoofer Button
+                    </button>
+                    <p id="spoofer-activity-notifier" class="lead text-danger">
+                        Inactive
                     </p>
-                    {% elif spooferbtnactivity=="Active" %}
-                    <p class="lead text-success">
-                        {{ spooferbtnactivity }}
-                    </p>
-                    {% endif %}
                 </div>
             </div>
-            <p id="kaas">
-                {{ cheese }}
-            </p>
         </div>
     </body>
 </html>
