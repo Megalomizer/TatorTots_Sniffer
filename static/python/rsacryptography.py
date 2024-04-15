@@ -1,6 +1,5 @@
 import random
 import math
-import os
 
 primeNumbers = set()
 public_key = None
@@ -32,7 +31,7 @@ def pickPrimeNumber():
 	primeNumbers.remove(ret)
 	return ret
 
-def setkeys():
+def setKeys():
 	global public_key, private_key, n
 	prime1 = pickPrimeNumber()
 	prime2 = pickPrimeNumber()
@@ -51,23 +50,36 @@ def setkeys():
 			break
 		d += 1
 	private_key = d
-	
+
 def enableEncryption():
-	global public_key
+	global public_key, private_key
 	hasPublicKey = False
 	hasPrivateKey = False
 	f = open(keyFile, "r")
 	# Check if file has keys stored
 	for line in f:
-		lineparts = line.split("=")
-		if lineparts[0] == "_PUBLICKEY" and lineparts[1] != None and lineparts[1] != "":
-			hasPublicKey = True
-			public_key = int(lineparts[1])
-			print(public_key)
-		if lineparts[0] == "_PRIVATEKEY" and lineparts[1] != None and lineparts[1] != "":
-			hasPrivateKey = True
-			private_key = int(lineparts[1])
-			print(private_key)
+		if str(line)[0] == "_":
+			lineparts = line.split("=")
+			potentialKey = 0
+			if int(lineparts[1].removesuffix("\n"), 2) != "" and int(lineparts[1].removesuffix("\n"), 2) != 0:
+				potentialKey = int(lineparts[1].removesuffix("\n"), 2)
+
+			if lineparts[0] == "_PUBLICKEY" and potentialKey != 0:
+				hasPublicKey = True
+				public_key = potentialKey
+			
+			if lineparts[0] == "_PRIVATEKEY" and potentialKey != 0:
+				hasPrivateKey = True
+				private_key = potentialKey
+	
+	f.close()
+
+	if hasPrivateKey == False or hasPublicKey == False:
+		fillPrimeSet()
+		setKeys()
+		f = open(keyFile, 'w')
+		f.write(f"_PUBLICKEY={format(public_key, "b")}\n_PRIVATEKEY={format(private_key, "b")}")
+		f.close()
 
 # To encrypt the given ascii value to a number
 def encrypt(message):
@@ -107,6 +119,3 @@ def decoder(encoded):
 	for num in encoded:
 		s += chr(decrypt(num))
 	return s
-
-enableEncryption()
-
