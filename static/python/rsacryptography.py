@@ -166,5 +166,3 @@ def decoder(encoded):
 	for num in encoded:
 		s += chr(decrypt(num, key))
 	return s
-
-getKeys()

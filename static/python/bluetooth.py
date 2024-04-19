@@ -1,4 +1,5 @@
 import asyncio
+#import bluetooth
 import json
 import subprocess
 from bleak import BleakScanner
@@ -15,24 +16,19 @@ async def BluetoothScan():
 #     print(f"{Device.name} - {Device.address}")
 
 # SCAN FOR SERVICES ON BLUETOOTH DEVICE
-async def BluetoothServiceScanner(BluetoothAddress):
-  async with BleakClient(BluetoothAddress) as Client:
-    return Client.services
+# async def BluetoothServiceScanner(BluetoothAddress):
+#   return bluetooth.find_service(address=BluetoothAddress)
+
 # # How to use
-# Address = input("[@] Enter bluetooth address: ")
-# Services = asyncio.run(BluetoothServiceScanner(Address))
-# # prints
+# TargetAddress = input("[@] Enter target adddress: ")
+# Services = BluetoothServiceScan(TargetAddress)
 # for Service in Services:
-#     print(f"Service UUID: {Service.uuid}")
-#     Characteristics = Service.characteristics
-#     if Characteristics:
-#         print("    Characteristics:")
-#         for Characteristic in Characteristics:
-#             Readable = "Read" in Characteristic.properties
-#             Writable = "Write" in Characteristic.properties or "WriteWithoutResponse" in Characteristic.properties
-#             print(f"        - UUID: {Characteristic.uuid}")
-#             print(f"          Readable: {Readable}")
-#             print(f"          Writable: {Writable}")
+#     print(f"Service Name: {Service['name']}")
+#     print(f"    Host: {Service['host']}")
+#     print(f"    Description: {Service['description']}")
+#     print(f"    Provider: {Service['provider']}")
+#     print(f"    Port: {Service['port']}")
+#     print(f"    Protocol: {Service['protocol']}")
 
 # CONVERT TO JSON
 def BluetoothToJSON(devices):
@@ -64,3 +60,34 @@ def SpoofingMacAddress(Interface, NewMac):
     print(f"[+] Successfully changed {Interface} MAC address to {NewMac}")
   except Exception as e:
     print(f"[!] Error: {e}")
+
+# FORCE CONNECT TO BLUETOOTH DEVICE
+# def BluetoothForceConnectService(BluetoothAddress, Port, Protocol):
+#   while True:
+#     try:
+#       Socket = bluetooth.BluetoothSocket(Protocol)
+#       Socket.connect((BluetoothAddress, int(Port)))
+#       return Socket
+#     except bluetooth.BluetoothError as e:
+#       print(f"[!] Error: {e}")
+
+# COMMUNICATE WITH BLUETOOTH DEVICE
+def BluetoothCommunicateWithDevice(Socket):
+  Data = ""
+  while Data != "q":
+    Data = input("[@] Enter message to send:")
+    Socket.send(Data.encrypt())
+    RecvData = Socket.recv(1024)
+    print(f"[#] Recv data: {RecvData}")
+    Socket.close()
+
+# TargetAddress = input("[@] Enter target address: ")
+# TargetPort = input("[@] Enter target port: ")
+# TargetProtocol = input("[@] Enter target protocol: ")
+
+# ChosenProtocol = bluetooth.RFCOMM
+# if TargetProtocol == "L2CAP":
+#     ChosenProtocol = bluetooth.L2CAP
+
+# Socket = BluetoothForceConnectService(TargetAddress, TargetPort, ChosenProtocol)
+# BluetoothCommunicateWithDevice(Socket)
