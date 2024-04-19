@@ -1,0 +1,88 @@
+.row-objects-spread {
+  display: flex;
+  height: fit-content;
+  justify-content: center;
+  align-content: center;
+}
+
+.general-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-right: 25px solid #555;
+  border-bottom: 15px solid transparent;
+}
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-left: 25px solid #555;
+  border-bottom: 15px solid transparent;
+}
+
+.pad-right {
+  margin-right: 50px;
+  margin-left: 10px;
+}
+
+.pad-left {
+  margin-right: 10px;
+  margin-left: 50px;
+}
+
+.center-text-vertical {
+  margin-top: 2.5px;
+}
+
+.base-h-width {
+  width: 300px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.outer-border-circle {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 25px;
+  height: 400px;
+  width: 400px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.inner-background-circle {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 350px;
+  width: 350px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.center-circle {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.circle-content-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.steps-counter {
+  margin-top: 40px;
+}
