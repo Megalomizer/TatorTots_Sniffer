@@ -4,16 +4,27 @@ import json
 import subprocess
 from bleak import BleakScanner
 from bleak import BleakClient
+import static.python.rsacryptography as rsa
 
 # SCAN FOR BLUETOOTH DEVICES
 async def BluetoothScan():
     Devices = await BleakScanner.discover()
     return Devices
-# # How to use
-# Devices = asyncio.run(BluetoothScan())
-# # Prints
-# for Device in Devices:
-#     print(f"{Device.name} - {Device.address}")
+
+# CONVERT TO JSON
+def BluetoothToJSON(devices):
+  devicesJSON = []
+  for device in devices:
+    devicesJSON.append({
+      "name": device.name,
+      "address": device.address
+    })
+  devicesJSON = json.dumps(devicesJSON)
+  encoded = rsa.encoder(devicesJSON)
+  f = open("./static/python/devices", "w")
+  f.write(str(encoded))
+  f.close()
+  return devicesJSON
 
 # SCAN FOR SERVICES ON BLUETOOTH DEVICE
 # async def BluetoothServiceScanner(BluetoothAddress):
@@ -29,21 +40,6 @@ async def BluetoothScan():
 #     print(f"    Provider: {Service['provider']}")
 #     print(f"    Port: {Service['port']}")
 #     print(f"    Protocol: {Service['protocol']}")
-
-# CONVERT TO JSON
-def BluetoothToJSON(devices):
-  devicesJSON = []
-  for device in devices:
-    devicesJSON.append({
-      "name": device.name,
-      "address": device.address
-    })
-
-  print(devicesJSON)
-  devicesJSON = json.dumps(devicesJSON)
-  print(devicesJSON)
-
-  return devicesJSON
 
 # CHANGE MAC ADDRESS FOR SOME BLUETOOTH DEVICES ** LINUX ONLY
 def SpoofingMacAddress(Interface, NewMac):
@@ -91,3 +87,8 @@ def BluetoothCommunicateWithDevice(Socket):
 
 # Socket = BluetoothForceConnectService(TargetAddress, TargetPort, ChosenProtocol)
 # BluetoothCommunicateWithDevice(Socket)
+
+def deleteDevices():
+  f = open("./static/python/devices", "w")
+  f.write("")
+  f.close()

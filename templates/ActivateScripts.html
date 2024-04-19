@@ -50,16 +50,19 @@
                     <thead>
                         <tr class="table-dark table-bl-head">
                             <th scope="col" class="columnWidthID">
-                                <p class="center-object header-font-sizes">ID</p>
+                                <p class="start-object header-font-sizes">ID</p>
                             </th>
                             <th scope="col" class="columnWidthName">
-                                <p class="center-object header-font-sizes">Name</p>
+                                <p class="start-object header-font-sizes">Name</p>
                             </th>
                             <th scope="col" class="columnWidthAddress">
-                                <p class="center-object header-font-sizes">Address</p>
+                                <p class="start-object header-font-sizes">Address</p>
                             </th>
                             <th scope="col">
                                 <div class="columnWidthButtons">
+                                    <button type="button" class="btn btn-secondary btn-generic-width deleteDevices" id="deleteDevicesBtn" onclick="deletionofdevices()">
+                                        Delete Devices
+                                    </button>
                                     <button type="button" class="btn btn-secondary btn-generic-width refreshDevices" id="searchDevicesBtn" onclick="pyFindBluetoothDevices()">
                                         Search Devices
                                     </button>

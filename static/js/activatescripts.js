@@ -22,7 +22,7 @@ function displayBluetoothDevices(response) {
   // Get table
   let table = document.getElementById("bl_table").getElementsByTagName("tbody")[0];
   // Clear table
-  table.innerHTML = "";
+  table.children = null;
   // Add devices to table
   for (i = 0; i < response.length; ++i) {
     let tr = table.insertRow();
@@ -45,7 +45,19 @@ function displayBluetoothDevices(response) {
     cell1.innerHTML = id;
     cell1.classList.add("columnWidthID");
     cell2.innerHTML = name;
+    cell2.classList.add("columnWidthName");
     cell3.innerHTML = address;
+    cell3.classList.add("columnWidthAddress");
+    //cell4.innerHTML = `<form action="/details" method="POST"><input type="hidden" name="address" value="${address}"><input type="hidden" name="name" value="${name}"><button type="submit" class="btn btn-secondary btn-generic-width">Details</button></>`;
+    
+    detailsBtn = document.createElement("button");
+    detailsBtn.type = "button";
+    detailsBtn.className = "btn btn-secondary btn-generic-width";
+    detailsBtn.textContent = "Details";
+    detailsBtn.addEventListener("click", () => {
+      deviceDetails(name, address);
+    });
+    cell4.appendChild(detailsBtn);
   }
 }
 
@@ -87,7 +99,32 @@ function spooferActivityInactive() {
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
-/// Decrypt Message
-function decrypt(msg) {
-  
+/// DETAILS / POST
+function deviceDetails(name, address) {
+  const device = {
+    "name": name,
+    "address": address,
+  }
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/devicedetails", true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      var response = xhr.responseText; // GETS PAGE AS RESPONSE -> SHOULD BE REDIRECTED TO DETAILS PAGE
+      console.log(response);
+    } else {
+      console.log("Error: " + xhr.status);
+    }
+  };
+  xhr.send(JSON.stringify(device));
+}
+
+/// DELETE
+function deletionofdevices() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("DELETE", "/activatescripts$delbl", true);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.send();
+  let table = document.getElementById("bl_table").getElementsByTagName("tbody")[0];
+  table.children = null;
 }

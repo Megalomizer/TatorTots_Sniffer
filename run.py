@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, jsonify
+from flask import Flask, render_template, redirect, jsonify, request, url_for
 import asyncio
 import static.python.bluetooth as pybl
 import static.python.rsacryptography as cryption
@@ -25,11 +25,24 @@ def calories():
 def sleep():
     return render_template('sleeprythm.html')
 
+@app.route("/devicedetails", methods=['POST'])
+def detailsDevice():
+    if request.method == 'POST':
+        device = request.json
+        address = device["address"]
+        name = device["name"]
+        # return render_template("devicedetails.html", address=address, name=name)
+        return render_template("devicedetails.html", address=address)
+
 @app.route("/activatescripts$getbl", methods=["GET"])
 def findBl():
     devices = asyncio.run(pybl.BluetoothScan())
     devices = pybl.BluetoothToJSON(devices)
     return devices
+
+@app.route("/activatescripts$delbl", methods=["DELETE"])
+def delBl():
+    pybl.deleteDevices()
 
 if __name__ == "__main__":
     app.run(debug=True)
