@@ -2,7 +2,6 @@
     width: 100%;
     padding-left: 10%;
     padding-right: 10%;
-    
 }
 
 .center-object {
@@ -11,20 +10,15 @@
     align-content: center;
 }
 
-.header-margins {
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
-
-.row-objects-endtoend {
+.start-object {
     display: flex;
-    height: fit-content;
-    justify-content: space-between;
+    justify-content: start;
     align-content: center;
 }
 
-.btn-generic-width {
-    width: 300px;
+.header-margins {
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .navbar-maxheight {
@@ -35,4 +29,144 @@
     width: 100%;
     padding-left: 25%;
     padding-right: 25%;
+}
+
+.tableBluetooth {
+    width: 100%;
+}
+
+.tableBluetooth:hover {
+    background-color: darkgrey;
+}
+
+.columnWidthID {
+    width: 5%;
+    font-weight: bold;
+}
+.columnWidthName {
+    width: 10%;
+}
+
+.columnWidthAddress {
+    width: 20%;
+}
+
+.table-bl-head {
+    width: 100%;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 0px;
+}
+
+.deleteDevices {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: 15px;
+    margin-right: 30px;
+}
+
+.refreshDevices {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: 15px;
+}
+
+.header-font-sizes {
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.columnWidthButtons{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-content: center;
+}
+
+.device-properties {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.properties-background {
+    background-color: rgb(161, 161, 161);
+    border-radius: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    height: 350px;
+    width: 45%;
+}
+
+.properties-container {
+    margin: 5%;
+}
+
+.properties-label {
+    font-weight: bold;
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+.properties-property {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-weight: lighter;
+    font-size: 24px;
+}
+
+.notice {
+    word-wrap: normal;
+    white-space: normal;
+    word-break: keep-all;
+    font-size: 18px;
+}
+
+.properties-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-direction: row;
+}
+
+.properties-row-buttons{
+    display: flex;
+    justify-content: start;
+    align-content: center;
+    flex-direction: row;
+    margin-left: 3.35%;
+    margin-right: 3.35%;
+}
+
+.properties-column {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-direction: column;
+}
+
+.button-style {
+    margin-top: 20px;
+    border-radius: 15px;
+    width: 30%;
+    font-size: 22px;
+    height: 100px;
+}
+
+.button-row-gap {
+    width: 5%;
+}
+
+.button-row-gap-mid {
+    width: 5%;
 }

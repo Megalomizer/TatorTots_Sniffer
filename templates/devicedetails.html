@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>DeviceDetails</title>
+        <link rel="stylesheet" href="../static/styles/bootswatchLux.css"/>
+        <link rel="stylesheet" href="../static/styles/activescripts.css"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid navbar-maxheight">
+                <img class="navbar-brand" src="../static/images/tatortots_logo.png" alt="TatorTots_Logo" width="125" height="125"/>
+                <h3 class="navbar-brand">SWaBPT</h3>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/activatescripts">
+                                Activate Scripts
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/caloriecounter">
+                                Calorieën Teller
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/heartbeats">
+                                Hartslag Monitor
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sleeprythm">
+                                Slaap Ritme
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="window-box">
+            <h1 class="center-object header-margins">DeviceDetails</h1>
+            <div class="properties-row">
+                <!-- Properties of device -->
+                <div class="properties-background properties-column">
+                    <div class="properties-container">
+                        <h2 class="properties-label">Name:</h2>
+                        <p class="properties-property" id="device-name">{{ name }}</p>
+                    </div>
+                    <div class="properties-container">
+                        <h2 class="properties-label">Address:</h2>
+                        <p class="properties-property" id="device-address">{{ address }}</p>
+                    </div>
+                </div>
+                <!-- Notice property -->
+                <div class="properties-background">
+                    <div class="properties-container">
+                        <h2 class="properties-label center-object">NOTICE!</h2>
+                        <p class="properties-property notice">
+                            By continuing use of any of these scripts, you acknowledge that you are either the owner of the selected device or have permission of the owner of the device.
+                            If you do not have permission or this is not your device, please do not use any of the scripts.
+                            Use of these scripts is not allowed if you do not have permission of the owner and use of the scripts will be at your own risk!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="properties-row-buttons">
+                <!-- Buttons to utilize scripts -->
+                <button type="button" class="btn btn-primary btn-generic-width button-style" id="activateScriptBtn" onclick="">Script 1</button>
+                <div class="button-row-gap"></div>
+                <button type="button" class="btn btn-primary btn-generic-width button-style" id="activateScriptBtn" onclick="">Script 2</button>
+                <div class="button-row-gap-mid"></div>
+                <button type="button" class="btn btn-primary btn-generic-width button-style" id="activateScriptBtn" onclick="">Script 3</button>
+                <div class="button-row-gap"></div>
+                <button type="button" class="btn btn-primary btn-generic-width button-style" id="activateScriptBtn" onclick="">Script 4</button>
+            </div>
+        </div>
+    </body>
+</html>

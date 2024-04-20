@@ -52,9 +52,6 @@ def setKeys():
 			break
 		e += 1
 	public_key = e
-
-	print("\n...\n")
-
 	d = 1001*1001
 	while True:
 		test = (d*e)%fi
@@ -62,7 +59,6 @@ def setKeys():
 			break
 		d += 1
 	private_key = d
-	print(f"pub - {public_key} | pri - {private_key}")
 
 def fileencryption(key):
 	e = ""
@@ -85,11 +81,11 @@ def filedecryption(line):
 	return int(key)
 
 def getKeys():
-	global public_key, private_key
+	global public_key, private_key, n
 	hasPublicKey = False
 	hasPrivateKey = False
+	hasN = False
 	f = open(keyFile, "r")
-	# Check if file has keys stored
 	for line in f:
 		if str(line)[0] == "_":
 			lineparts = line.split("=")
@@ -97,33 +93,26 @@ def getKeys():
 			potentialKey = 0
 			if lineparts[1] != "" and int(lineparts[1]) != 0:
 				potentialKey = int(filedecryption(lineparts[1]))
-
 			if lineparts[0] == "_PUBLICKEY" and potentialKey != 0:
-				print("\nPublic Key has been found!")
 				hasPublicKey = True
 				public_key = potentialKey
-			
 			if lineparts[0] == "_PRIVATEKEY" and potentialKey != 0:
-				print("\nPrivate key has been found!")
 				hasPrivateKey = True
 				private_key = potentialKey
-	
+			if lineparts[0] == "_N" and potentialKey != 0:
+				hasN = True
+				n = potentialKey
 	f.close()
-
-	if hasPrivateKey == False or hasPublicKey == False:
-		print("\nNot all keys were found")
+	if hasPrivateKey == False or hasPublicKey == False or hasN == False:
 		if len(primeNumbers) <= 1:
 			setPrimeSet()
-		print("\nGenerating new keys...")
 		setKeys()
-		print("\nNew keys were generated!")
 		f = open(keyFile, 'w')
 		pbk = int(fileencryption(public_key))
 		pvk = int(fileencryption(private_key))
-		#f.write(f"_PUBLICKEY={format(public_key, 'b')}\n_PRIVATEKEY={format(private_key, 'b')}")
-		f.write(f"_PUBLICKEY={pbk}\n_PRIVATEKEY={pvk}")
+		nk = int(fileencryption(n))
+		f.write(f"_PUBLICKEY={pbk}\n_PRIVATEKEY={pvk}\n_N={nk}")
 		f.close()
-		print("\nKeys have been saved!")
 
 # To encrypt the given ascii value to a number
 def encrypt(message, key):
@@ -150,6 +139,7 @@ def decrypt(encrypted_text, key):
 # Convert each character of the msg to its ascii value and then encrypting each ascii value
 def encoder(message):
 	global public_key
+	getKeys()
 	key = public_key
 	encoded = []
 	# Calling the encrypting function in encoding function
@@ -160,11 +150,10 @@ def encoder(message):
 # Convert each number in the encryption to the ascii and then to characters
 def decoder(encoded):
 	global private_key
+	getKeys()
 	key = private_key
 	s = ''
 	# Calling the decrypting function decoding function
 	for num in encoded:
 		s += chr(decrypt(num, key))
 	return s
-
-getKeys()

@@ -11,6 +11,7 @@
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div class="container-fluid navbar-maxheight">
                 <img class="navbar-brand" src="../static/images/tatortots_logo.png" alt="TatorTots_Logo" width="125" height="125"/>
+                <h3 class="navbar-brand">SWaBPT</h3>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -44,26 +45,34 @@
 
         <div class="window-box">
             <h1 class="center-object header-margins">Activate Scripts Page</h1>
-            <div class="standard-width">
-                <div class="row-objects-endtoend">
-                    <button type="button" class="btn btn-primary btn-generic-width" id="sniffer-activity-btn" onclick="pyFindBluetoothDevices()">
-                        Activate Sniffer Button
-                    </button>
-                    <p id="sniffer-activity-notifier" class="lead text-danger">
-                        Inactive
-                    </p>
-                </div>
-            </div>
-            <p></p>
-            <div class="standard-width">
-                <div class="row-objects-endtoend">
-                    <button type="button" class="btn btn-primary btn-generic-width" id="spoofer-activity-btn" onclick="changeSpooferActivity()">
-                        Activate Spoofer Button
-                    </button>
-                    <p id="spoofer-activity-notifier" class="lead text-danger">
-                        Inactive
-                    </p>
-                </div>
+            <div class="table-bl-head">
+                <table class="table table-hover" id="bl_table">
+                    <thead>
+                        <tr class="table-dark table-bl-head">
+                            <th scope="col" class="columnWidthID">
+                                <p class="start-object header-font-sizes">ID</p>
+                            </th>
+                            <th scope="col" class="columnWidthName">
+                                <p class="start-object header-font-sizes">Name</p>
+                            </th>
+                            <th scope="col" class="columnWidthAddress">
+                                <p class="start-object header-font-sizes">Address</p>
+                            </th>
+                            <th scope="col">
+                                <div class="columnWidthButtons">
+                                    <button type="button" class="btn btn-secondary btn-generic-width deleteDevices" id="deleteDevicesBtn" onclick="deletionofdevices()">
+                                        Delete Devices
+                                    </button>
+                                    <button type="button" class="btn btn-secondary btn-generic-width refreshDevices" id="searchDevicesBtn" onclick="pyFindBluetoothDevices()">
+                                        Search Devices
+                                    </button>
+                                </div>
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
     </body>
