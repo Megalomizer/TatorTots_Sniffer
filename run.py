@@ -33,6 +33,15 @@ def detailsDevice():
         name = device["name"]
         # return render_template("devicedetails.html", address=address, name=name)
         return render_template("devicedetails.html", address=address)
+    
+@app.route("/details", methods=['POST', 'GET'])
+def details():
+    if request.method == 'POST':
+        name = request.values.get("name")
+        address = request.values.get("address")
+        print(name)
+        print(address)
+        return render_template("devicedetails.html", address=address, name=name)
 
 @app.route("/activatescripts$getbl", methods=["GET"])
 def findBl():

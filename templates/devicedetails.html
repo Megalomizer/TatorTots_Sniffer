@@ -44,7 +44,33 @@
 
         <div class="window-box">
             <h1 class="center-object header-margins">DeviceDetails</h1>
-            <p id="device_details_name"> {{ address }}</p>
+            <div class="properties-row">
+                <!-- Properties of device -->
+                <div class="properties-background properties-column">
+                    <div class="properties-container">
+                        <h2 class="properties-label">Name:</h2>
+                        <p class="properties-property" id="device-name">{{ name }}</p>
+                    </div>
+                    <div class="properties-container">
+                        <h2 class="properties-label">Address:</h2>
+                        <p class="properties-property" id="device-address">{{ address }}</p>
+                    </div>
+                </div>
+                <!-- Notice property -->
+                <div class="properties-background">
+                    <div class="properties-container">
+                        <h2 class="properties-label center-object">NOTICE!</h2>
+                        <p class="properties-property notice">
+                            By continuing use of any of these scripts, you acknowledge that you are either the owner of the selected device or have permission of the owner of the device.
+                            If you do not have permission or this is not your device, please do not use any of the scripts.
+                            Use of these scripts is not allowed if you do not have permission of the owner and use of the scripts will be at your own risk!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <!-- Buttons to utilize scripts -->
+            </div>
         </div>
     </body>
 </html>

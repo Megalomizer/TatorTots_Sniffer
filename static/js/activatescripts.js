@@ -50,15 +50,50 @@ function displayBluetoothDevices(response) {
     cell3.classList.add("columnWidthAddress");
     //cell4.innerHTML = `<form action="/details" method="POST"><input type="hidden" name="address" value="${address}"><input type="hidden" name="name" value="${name}"><button type="submit" class="btn btn-secondary btn-generic-width">Details</button></>`;
     
-    detailsBtn = document.createElement("button");
-    detailsBtn.type = "button";
-    detailsBtn.className = "btn btn-secondary btn-generic-width";
-    detailsBtn.textContent = "Details";
-    detailsBtn.addEventListener("click", () => {
-      deviceDetails(name, address);
-    });
-    cell4.appendChild(detailsBtn);
+    // detailsBtn = document.createElement("button");
+    // detailsBtn.type = "button";
+    // detailsBtn.className = "btn btn-secondary btn-generic-width";
+    // detailsBtn.textContent = "Details";
+    // detailsBtn.addEventListener("click", () => {
+    //   deviceDetails(name, address);
+    // });
+    // cell4.appendChild(detailsBtn);
+
+    // detailsbtn = document.createElement("a");
+    // detailsbtn.type = "button";
+    // detailsbtn.className = "btn btn-secondary btn-generic-width";
+    // detailsbtn.textContent = "Details";
+    // detailsbtn.href = `/details?name=${name}&address=${address}`;
+    // cell4.appendChild(detailsbtn);
+
+    detailsbtn = setDetailsFormButton(name, address);
+    cell4.appendChild(detailsbtn);
   }
+}
+
+function setDetailsFormButton(name, address) {
+  let form = document.createElement("form");
+  form.action = "/details";
+  form.method = "POST";
+
+  let inputName = document.createElement("input");
+  inputName.type = "hidden";
+  inputName.name = "name";
+  inputName.value = name;
+  form.appendChild(inputName);
+
+  let inputAddress = document.createElement("input");
+  inputAddress.type = "hidden";
+  inputAddress.name = "address";
+  inputAddress.value = address;
+  form.appendChild(inputAddress);
+
+  let confirmbtn = document.createElement("button");
+  confirmbtn.type = "submit";
+  confirmbtn.className = "btn btn-secondary btn-generic-width";
+  confirmbtn.textContent = "Details";
+  form.appendChild(confirmbtn);
+  cell4.appendChild(form);
 }
 
 /// Set Notification Active - BL Sniffer
