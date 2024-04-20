@@ -1,0 +1,100 @@
+.window-box {
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.center-object {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.start-object {
+  display: flex;
+  justify-content: start;
+  align-content: center;
+}
+.header-margins {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.navbar-maxheight {
+  height: 75px;
+}
+
+.container-row {
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+  flex-direction: row;
+  width: 100%;
+}
+.spacebetween {
+  width: 5%;
+}
+
+.properties-background {
+  width: 35%;
+  height: fit-content;
+  border-radius: 15px;
+  background-color: grey;
+  color: white;
+  padding: 2%;
+  height: 400px;
+}
+.property-header {
+  font-weight: bold;
+}
+.property-context {
+  font-size: 20px;
+}
+
+.message-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: column;
+  width: 55%;
+  height: 400px;
+}
+.input-container {
+  background-color: grey;
+  border-radius: 15px;
+  width: 100%;
+  padding: 3%;
+}
+.output-container {
+  background-color: grey;
+  border-radius: 15px;
+  width: 100%;
+  padding: 2%;
+  margin-top: 5%;
+  height: 100%;
+}
+
+.msg-received {
+  font-size: 18px;
+  color: white;
+  font-weight: lighter;
+}
+.message-input-field {
+  border-radius: 15px;
+  border: 0;
+  border-color: white;
+  background-color: white;
+  color: black;
+  width: 100%;
+  padding: 1%;
+  font-size: 16px;
+}
+.input-row {
+  display: flex;
+  justify-content: center;
+  align-content: space-between;
+  flex-direction: row;
+}
+.message-confirm-btn {
+  border-radius: 15px;
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>DeviceConnected</title>
+        <link rel="stylesheet" href="../static/styles/bootswatchLux.css"/>
+        <link rel="stylesheet" href="../static/styles/forcedconnected.css"/>
+        <script src="../static/js/forcedconnect.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid navbar-maxheight">
+                <img class="navbar-brand" src="../static/images/tatortots_logo.png" alt="TatorTots_Logo" width="125" height="125"/>
+                <h3 class="navbar-brand">SWaBPT</h3>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/activatescripts">
+                                Activate Scripts
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/caloriecounter">
+                                Calorieën Teller
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/heartbeats">
+                                Hartslag Monitor
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sleeprythm">
+                                Slaap Ritme
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="window-box">
+            <h1 class="center-object header-margins">Connected Forcefully to {{ address }}</h1>
+            <div class="container-row">
+              <div class="properties-background">
+                <h2 class="property-header">Mac-address</h2>
+                <p class="property-context" id="device-address">{{address}}</p>
+                <h2 class="property-header">Port</h2>
+                <p class="property-context" id="device-port">{{ port }}</p>
+                <h2 class="property-header">Protocol</h2>
+                <p class="property-context" id="device-protocol">{{ protocol }}</p>
+                <h2 class="property-header">Socket</h2>
+                <p class="property-context" id="device-socket">{{ socket }}</p>
+              </div>
+              <div class="spacebetween"></div>
+              <div class="message-container">
+                <div class="input-container">
+                  <h2 class="property-header">Send Message</h2>
+                  <div class="input-row">
+                    <input type="text" class="message-input-field" id="msg-input"/>
+                    <button type="button" class="btn btn-secondary btn-generic-width message-confirm-btn" onclick="sendMessage()">Send</button>
+                  </div>
+                </div>
+                <div class="output-container">
+                  <h2 class="property-header">Receive Message</h2>
+                  <p class="msg-received" id="message-received">No Message Received</p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </body>
+</html>

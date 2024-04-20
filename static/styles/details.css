@@ -1,0 +1,84 @@
+.notice {
+  word-wrap: normal;
+  white-space: normal;
+  word-break: keep-all;
+  font-size: 18px;
+}
+.properties-row {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-direction: row;
+}
+.properties-row-buttons{
+  display: flex;
+  justify-content: start;
+  align-content: center;
+  flex-direction: row;
+  margin-left: 3.35%;
+  margin-right: 3.35%;
+}
+.properties-column {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-direction: column;
+}
+.button-style {
+  margin-top: 20px;
+  border-radius: 15px;
+  width: 30%;
+  font-size: 22px;
+  height: 100px;
+}
+.button-row-gap {
+  width: 5%;
+}
+.button-row-gap-mid {
+  width: 5%;
+}
+.table-services-container {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2%;
+}
+.service-header-fs {
+  font-size: 20px;
+  margin: 0;
+}
+.services-col-id {
+  width: 2%;
+  font-weight: bold;
+}
+.services-col-name {
+  width: 10%;
+}
+.services-col-description {
+  width: 15%;
+}
+.services-col-host {
+  width: 10%;
+}
+.services-col-provider {
+  width: 10%;
+}
+.services-col-port {
+  width: 10%;
+}
+.services-col-protocol {
+  width: 10%;
+}
+.services-col-fc {
+  width: 13%;
+}
+.table-services {
+  width: 100%;
+}
+.table-services:hover {
+  background-color: darkgrey;
+}
+.btn-forceconnection {
+  width: 100%;
+  border-radius: 15px;
+}

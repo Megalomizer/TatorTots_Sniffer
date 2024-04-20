@@ -73,10 +73,9 @@ function setDetailsFormButton(name, address) {
 
   let confirmbtn = document.createElement("button");
   confirmbtn.type = "submit";
-  confirmbtn.className = "btn btn-secondary btn-generic-width";
+  confirmbtn.className = "btn btn-secondary btn-generic-width refreshDevices";
   confirmbtn.textContent = "Details";
   form.appendChild(confirmbtn);
-  cell4.appendChild(form);
 }
 
 /// Set Notification Active - BL Sniffer
@@ -93,49 +92,7 @@ function snifferActivityActive() {
   btn.disabled = true;
 }
 
-/// Set Notification Active - Spoofer
-function spooferActivityActive() {
-  var spooferActivityNotifier = document.getElementById("spoofer-activity-notifier");
-  var spooferActivityBtn = document.getElementById("spoofer-activity-btn");
-
-  spooferActivityNotifier.classList.add("text-success");
-  spooferActivityNotifier.classList.remove("text-danger");
-  spooferActivityNotifier.textContent = "Active";
-  spooferActivityBtn.textContent = "Deactivate Spoofer Button";
-}
-
-/// Set Notification Inactive - Spoofer
-function spooferActivityInactive() {
-  var spooferActivityNotifier = document.getElementById("spoofer-activity-notifier");
-  var spooferActivityBtn = document.getElementById("spoofer-activity-btn");
-
-  spooferActivityNotifier.classList.add("text-danger");
-  spooferActivityNotifier.classList.remove("text-success");
-  spooferActivityNotifier.textContent = "Inactive";
-  spooferActivityBtn.textContent = "Activate Spoofer Button";
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////
-
-/// DETAILS / POST
-function deviceDetails(name, address) {
-  const device = {
-    "name": name,
-    "address": address,
-  }
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/devicedetails", true);
-  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      var response = xhr.responseText; // GETS PAGE AS RESPONSE -> SHOULD BE REDIRECTED TO DETAILS PAGE
-      console.log(response);
-    } else {
-      console.log("Error: " + xhr.status);
-    }
-  };
-  xhr.send(JSON.stringify(device));
-}
 
 /// DELETE
 function deletionofdevices() {
