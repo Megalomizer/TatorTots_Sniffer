@@ -48,23 +48,6 @@ function displayBluetoothDevices(response) {
     cell2.classList.add("columnWidthName");
     cell3.innerHTML = address;
     cell3.classList.add("columnWidthAddress");
-    //cell4.innerHTML = `<form action="/details" method="POST"><input type="hidden" name="address" value="${address}"><input type="hidden" name="name" value="${name}"><button type="submit" class="btn btn-secondary btn-generic-width">Details</button></>`;
-    
-    // detailsBtn = document.createElement("button");
-    // detailsBtn.type = "button";
-    // detailsBtn.className = "btn btn-secondary btn-generic-width";
-    // detailsBtn.textContent = "Details";
-    // detailsBtn.addEventListener("click", () => {
-    //   deviceDetails(name, address);
-    // });
-    // cell4.appendChild(detailsBtn);
-
-    // detailsbtn = document.createElement("a");
-    // detailsbtn.type = "button";
-    // detailsbtn.className = "btn btn-secondary btn-generic-width";
-    // detailsbtn.textContent = "Details";
-    // detailsbtn.href = `/details?name=${name}&address=${address}`;
-    // cell4.appendChild(detailsbtn);
 
     detailsbtn = setDetailsFormButton(name, address);
     cell4.appendChild(detailsbtn);
@@ -160,6 +143,5 @@ function deletionofdevices() {
   xhr.open("DELETE", "/activatescripts$delbl", true);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhr.send();
-  let table = document.getElementById("bl_table").getElementsByTagName("tbody")[0];
-  table.children = null;
+  location.reload();
 }
