@@ -20,12 +20,12 @@ function pyFindBluetoothDevices() {
 function displayBluetoothDevices(response) {
   snifferActivityInactive();
   // Get table
-  let table = document.getElementById("bl_table").getElementsByTagName("tbody")[0];
-  // Clear table
-  table.children = null;
+  let tbody = document.getElementById("bl_table").getElementsByTagName("tbody")[0];
+  let new_body = document.createElement("tbody");
+  tbody.parentNode.replaceChild(new_body, tbody);
   // Add devices to table
   for (i = 0; i < response.length; ++i) {
-    let tr = table.insertRow();
+    let tr = new_body.insertRow();
     let id = i + 1;
     let name = response[i].name;
     let address = response[i].address;
