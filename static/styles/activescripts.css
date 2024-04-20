@@ -139,9 +139,45 @@
     flex-direction: row;
 }
 
+.properties-row-buttons{
+    display: flex;
+    justify-content: start;
+    align-content: center;
+    flex-direction: row;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
 .properties-column {
     display: flex;
     justify-content: space-evenly;
     align-content: center;
     flex-direction: column;
+}
+
+.button-style {
+    margin-top: 20px;
+    border-radius: 15px;
+    width: 310px;
+    font-size: 22px;
+    height: 100px;
+}
+
+.button-row-gap {
+    width: 55px;
+}
+
+.btn1 {
+    margin-right: 75px;
+}
+.btn2 {
+    margin-right: 40px;
+    margin-left: 100px;
+}
+.btn3 {
+    margin-right: 75px;
+    margin-left: 15px;
+}
+.btn4 {
+    margin-left: 100px;
 }
