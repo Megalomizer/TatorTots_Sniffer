@@ -144,8 +144,8 @@
     justify-content: start;
     align-content: center;
     flex-direction: row;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 3.35%;
+    margin-right: 3.35%;
 }
 
 .properties-column {
@@ -158,26 +158,15 @@
 .button-style {
     margin-top: 20px;
     border-radius: 15px;
-    width: 310px;
+    width: 30%;
     font-size: 22px;
     height: 100px;
 }
 
 .button-row-gap {
-    width: 55px;
+    width: 5%;
 }
 
-.btn1 {
-    margin-right: 75px;
-}
-.btn2 {
-    margin-right: 40px;
-    margin-left: 100px;
-}
-.btn3 {
-    margin-right: 75px;
-    margin-left: 15px;
-}
-.btn4 {
-    margin-left: 100px;
+.button-row-gap-mid {
+    width: 5%;
 }
